@@ -2,9 +2,9 @@ name: Run PHPUnit tests
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   test:
@@ -17,14 +17,12 @@ jobs:
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2'
+          php-version: "8.2"
           extensions: mbstring, intl, pdo, pdo_mysql
           coverage: none
 
       - name: Install Composer dependencies
         run: composer install --no-interaction --prefer-dist --optimize-autoloader
-        working-directory: ./Memorama
 
       - name: Run PHPUnit
         run: ./vendor/bin/phpunit --testdox tests
-        working-directory: ./Memorama
